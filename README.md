@@ -1,7 +1,7 @@
 # tommybot
 1. at the beginning, you need to get "client id" and "client secret" at https://dev.hh.ru/admin
 2. next, to set up the tommybot use deploy_location/set
-> [!WARNING]
+> [!IMPORTANT]
 > be aware, you can set up all data only once, to set up again, you'll need to redeploy the repository
 3. next, prepare data for the tommybot set up:
    - prepare search links collection for the tommybot (every line is a search link, can be many lines), by your browser, just use search at hh.ru, than copy the top line broser link, looks like https://moscow.hh.ru/search/vacancy?hhtmFrom=main&hhtmFromLabel=vacancy_search_line&search_field=name&search_field=company_name&search_field=description&enable_snippets=false&L_save_area=true&area=1&text=java
