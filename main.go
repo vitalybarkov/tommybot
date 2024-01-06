@@ -258,22 +258,6 @@ func main() {
 		fmt.Fprintf(w, "%s", string(body))
 	})
 
-	http.HandleFunc("/get_js", func(w http.ResponseWriter, r *http.Request) {
-		filename := "./static/set_up.js"
-		_, err := os.Stat(filename)
-		if err == nil {
-			if r.Method == http.MethodGet { // GET
-				http.ServeFile(w, r, filename)
-			}
-		} else if os.IsNotExist(err) {
-			http.Error(w, "file "+filename+" does not exist\n", http.StatusBadRequest)
-			return
-		} else {
-			http.Error(w, "Error checking file existence", http.StatusBadRequest)
-			return
-		}
-	})
-
 	http.HandleFunc("/set", func(w http.ResponseWriter, r *http.Request) {
 		filename := "./static/index.html"
 		_, err := os.Stat(filename)
