@@ -1,4 +1,4 @@
-# tommybot
+# tommybot manual
 1. at the beginning, you need to get "client id" and "client secret" at https://dev.hh.ru/admin
 2. next, deploy the repository localy or at for example at render.com, and remember the deployed location, than go to https://dev.hh.ru/admin and edit "Redirect URI" field your app with the deploy location and add at the end /get_code , looks like https://tommybot-6.onrender.com/get_code
 3. next, to set up the tommybot use deploy_location/set
