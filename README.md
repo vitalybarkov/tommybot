@@ -16,4 +16,4 @@
    - optional: write a cover letter, what is less than 10_000 symbols, and it must be unified for all your vacancy requests (the search links)
 > [!IMPORTANT]
 > be aware, you can set up all data only once, to set up again, you'll need to delete "api_credentials.json" file and rename ./static/_index.html file to ./static/index.html (if you deployed remotely, then you'll need to redeploy the repository)
-4. now you can start or restart the tommybot open "localhost:8080/restart" ("location_of_your_deploy/restart")
+4. now, you can start or restart the tommybot by opening "localhost:8080/restart" ("location_of_your_deploy/restart")
