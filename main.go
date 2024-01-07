@@ -31,6 +31,7 @@ var MAX_REQUESTS int = 15000
 var SEARCH_LINKS []string = []string{}
 var RESUME_ID = ""
 var COVER_LETTER string = ""
+var API_CREDENTIALS_FILE_LOCATION string = "api_credentials.json"
 
 type store_data struct {
 	ACCESS_TOKEN  string   `json:"ACCESS_TOKEN"`
@@ -150,23 +151,27 @@ func prepare_search_string_for_search_request(search_string string, page string,
 	return right_side_of_the_request
 }
 
-func save_credentials_to_file(filename string) error {
-	credentials := map[string]string{
-		"ACCESS_TOKEN":  ACCESS_TOKEN,
-		"REFRESH_TOKEN": REFRESH_TOKEN,
+func save_credentials_to_file(filename string) bool {
+	if len(ACCESS_TOKEN) == 64 && len(REFRESH_TOKEN) == 64 && len(RESUME_ID) > 0 && len(SEARCH_LINKS) > 0 {
+		data := store_data{
+			ACCESS_TOKEN:  ACCESS_TOKEN,
+			REFRESH_TOKEN: REFRESH_TOKEN,
+			RESUME_ID:     RESUME_ID,
+			SEARCH_LINKS:  SEARCH_LINKS,
+			COVER_LETTER:  COVER_LETTER,
+		}
+		content, err := json.Marshal(data)
+		if err != nil {
+			fmt.Println(err)
+		}
+		err = os.WriteFile(filename, content, 0644)
+		if err != nil {
+			log.Fatal(err)
+		}
+		return true
+	} else {
+		return false
 	}
-
-	data, err := json.MarshalIndent(credentials, "", "  ")
-	if err != nil {
-		return err
-	}
-
-	err = os.WriteFile(filename, data, 0644)
-	if err != nil {
-		return err
-	}
-
-	return nil
 }
 
 func load_credentials_from_file(filename string) (string, string, []string, string, string, error) {
@@ -264,7 +269,7 @@ func main() {
 		if err == nil {
 			if r.Method == http.MethodGet { // GET
 				// return the html file
-				file_settings := "api_credentials.json"
+				file_settings := API_CREDENTIALS_FILE_LOCATION
 
 				// Check if file exists
 				if _, err := os.Stat(file_settings); err == nil {
@@ -284,15 +289,12 @@ func main() {
 				}
 
 				// store the data in the settings file
-				if len(data.ACCESS_TOKEN) == 64 && len(data.REFRESH_TOKEN) == 64 && len(data.RESUME_ID) > 0 && len(data.SEARCH_LINKS) > 0 {
-					content, err := json.Marshal(data)
-					if err != nil {
-						fmt.Println(err)
-					}
-					err = os.WriteFile("api_credentials.json", content, 0644)
-					if err != nil {
-						log.Fatal(err)
-					}
+				ACCESS_TOKEN = data.ACCESS_TOKEN
+				REFRESH_TOKEN = data.REFRESH_TOKEN
+				SEARCH_LINKS = data.SEARCH_LINKS
+				RESUME_ID = data.RESUME_ID
+				COVER_LETTER = data.COVER_LETTER
+				if save_credentials_to_file(API_CREDENTIALS_FILE_LOCATION) {
 					fmt.Printf("the data was store in the setting\n")
 				} else {
 					http.Error(w, "the data values has wrong sizes", http.StatusBadRequest)
@@ -300,7 +302,7 @@ func main() {
 				}
 
 				// get API credentials from the JSON file
-				ACCESS_TOKEN, REFRESH_TOKEN, SEARCH_LINKS, RESUME_ID, COVER_LETTER, err = load_credentials_from_file("api_credentials.json")
+				ACCESS_TOKEN, REFRESH_TOKEN, SEARCH_LINKS, RESUME_ID, COVER_LETTER, err = load_credentials_from_file(API_CREDENTIALS_FILE_LOCATION)
 				if err != nil {
 					fmt.Println("Error getting API credentials:", err)
 					return
@@ -335,8 +337,8 @@ func main() {
 		// the robot
 
 		// check if settings file exists
-		if ACCESS_TOKEN == "" || REFRESH_TOKEN == "" || SEARCH_LINKS == nil || COVER_LETTER == "" {
-			file_settings := "api_credentials.json"
+		if ACCESS_TOKEN == "" || REFRESH_TOKEN == "" || SEARCH_LINKS == nil || RESUME_ID == "" || COVER_LETTER == "" {
+			file_settings := API_CREDENTIALS_FILE_LOCATION
 			if _, err := os.Stat(file_settings); err == nil {
 				// get API credentials from the JSON file
 				ACCESS_TOKEN, REFRESH_TOKEN, SEARCH_LINKS, RESUME_ID, COVER_LETTER, err = load_credentials_from_file(file_settings)
@@ -388,9 +390,10 @@ func main() {
 									REFRESH_TOKEN = gjson.Parse(gjson.Get(data, "refresh_token").Raw).Str
 
 									// save API credentials to a JSON file
-									err := save_credentials_to_file("api_credentials.json")
-									if err != nil {
-										fmt.Println("Error saving API credentials:", err)
+									if save_credentials_to_file(API_CREDENTIALS_FILE_LOCATION) {
+										fmt.Printf("the data was store in the setting\n")
+									} else {
+										http.Error(w, "the data values has wrong sizes", http.StatusBadRequest)
 										return
 									}
 									// END save API credentials to a JSON file
