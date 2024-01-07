@@ -1,4 +1,4 @@
-# tommybot manual
+# tommybot set up manual
 1. at the beginning, you need to get "client id" and "client secret" at https://dev.hh.ru/admin
 2. next, deploy:
    - download zip file of the repository https://github.com/vitalybarkov/tommybot/zipball/master/, or clone https://github.com/vitalybarkov/tommybot/
