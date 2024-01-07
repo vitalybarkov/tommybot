@@ -10,6 +10,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
@@ -264,21 +265,33 @@ func main() {
 	})
 
 	http.HandleFunc("/set", func(w http.ResponseWriter, r *http.Request) {
+		// change the working directory to the directory containing the executable
+		exe_path, err := os.Executable()
+		if err != nil {
+			fmt.Println("Error getting executable path:", err)
+			return
+		}
+		exe_dir := filepath.Dir(exe_path)
+		if err := os.Chdir(exe_dir); err != nil {
+			fmt.Println("Error changing working directory:", err)
+			return
+		}
+		// END change the working directory to the directory containing the executable
+
 		filename := "./static/index.html"
-		_, err := os.Stat(filename)
+		_, err = os.Stat(filename)
 		if err == nil {
 			if r.Method == http.MethodGet { // GET
-				// return the html file
+				// check if file exists, then return the html file
 				file_settings := API_CREDENTIALS_FILE_LOCATION
-
-				// Check if file exists
 				if _, err := os.Stat(file_settings); err == nil {
 					fmt.Fprintf(w, "the tommybot was set, to reset you need to redeploy the application")
 				} else if os.IsNotExist(err) {
-					http.ServeFile(w, r, "static/index.html")
+					http.ServeFile(w, r, filename)
 				} else {
 					fmt.Println("Error:", err)
 				}
+				// END check if file exists, then return the html file
 			} else if r.Method == http.MethodPost { // POST
 				// unmarshal json data
 				data := store_data{}
@@ -287,6 +300,7 @@ func main() {
 					http.Error(w, "Failed to parse JSON", http.StatusBadRequest)
 					return
 				}
+				// END unmarshal json data
 
 				// store the data in the settings file
 				ACCESS_TOKEN = data.ACCESS_TOKEN
@@ -300,6 +314,7 @@ func main() {
 					http.Error(w, "the data values has wrong sizes", http.StatusBadRequest)
 					return
 				}
+				// END store the data in the settings file
 
 				// get API credentials from the JSON file
 				ACCESS_TOKEN, REFRESH_TOKEN, SEARCH_LINKS, RESUME_ID, COVER_LETTER, err = load_credentials_from_file(API_CREDENTIALS_FILE_LOCATION)
@@ -307,6 +322,7 @@ func main() {
 					fmt.Println("Error getting API credentials:", err)
 					return
 				}
+				// END get API credentials from the JSON file
 
 				// rename the index file
 				old_file_name := filename
@@ -317,6 +333,7 @@ func main() {
 					return
 				}
 				fmt.Printf("file %s renamed to %s\n", old_file_name, new_file_name)
+				// END rename the index file
 
 				w.Header().Set("Content-Type", "application/json")
 				w.Write([]byte(`{"message": "data stored successfully"}`))
@@ -335,7 +352,6 @@ func main() {
 
 	http.HandleFunc("/hi", func(w http.ResponseWriter, r *http.Request) {
 		// the robot
-
 		// check if settings file exists
 		if ACCESS_TOKEN == "" || REFRESH_TOKEN == "" || SEARCH_LINKS == nil || RESUME_ID == "" || COVER_LETTER == "" {
 			file_settings := API_CREDENTIALS_FILE_LOCATION
@@ -487,12 +503,18 @@ func main() {
 		// END the robot
 	})
 
+	// run the server
 	port := os.Getenv("PORT")
+	if len(os.Args) > 1 {
+		port = os.Args[1]
+	}
 	if port == "" {
 		port = "8080"
 	}
+	fmt.Println("tommybot server runs at port: " + port)
+	fmt.Println("// to change the port, run the app with first argument of your port number")
 	log.Fatal(http.ListenAndServe(":"+port, nil))
-
+	// END run the server
 }
 
 // END the server with the robot

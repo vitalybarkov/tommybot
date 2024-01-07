@@ -77,6 +77,9 @@
             font-weight: bold;
             font-family: Arial, Helvetica, sans-serif;
         }
+        form #restart_link {
+            margin-bottom: 6em;
+        }
         
         .disabled {
             pointer-events: none;
@@ -85,6 +88,9 @@
             text-decoration: none;
 
             opacity: .4;
+        }
+        .hidden {
+            display: none;
         }
 
         @media only screen
@@ -127,7 +133,7 @@
         </div>
         <div class="line">
             <div>&nbsp;</div>
-            <div><a id="get_access_and_refresh_tokens_link" href="#">GET ACCESS AND REFRESH TOKES</a><p id="get_access_and_refresh_tokens_message">&nbsp;</p></div>
+            <div><a id="get_access_and_refresh_tokens_link" href="#">GET ACCESS AND REFRESH TOKENS</a><p id="get_access_and_refresh_tokens_message">&nbsp;</p></div>
         </div>
         <div class="line">
             <div>access token</div>
@@ -158,6 +164,10 @@
             <div><input type="button" id="save_button" value="SAVE"></div>
             <div id="settings_was_stored">&nbsp;</div>
         </div>
+        <div class="line" id="restart_link">
+            <div>link to start or restart the&nbsp;tommybot</div>
+            <div><a href="/restart">/restart</a></div>
+        </div>
     </form>
 
     <script>
@@ -176,6 +186,8 @@
             var input_field_resume_id = document.getElementById('resume_id');
             var input_field_cover_letter = document.getElementById('cover_letter');
             var save_button = document.getElementById('save_button');
+            var restart_link = document.getElementById('restart_link');
+            var the_form = document.getElementById('the_form');
             var settings_was_stored = document.getElementById('settings_was_stored');
             var post_data = {
                 ACCESS_TOKEN:   "",
@@ -197,6 +209,7 @@
             input_field_code.classList.add('disabled');
             get_access_and_refresh_tokens_link.classList.add('disabled');
             save_button.classList.add('disabled');
+            restart_link.classList.add('hidden');
             // END data
 
             // attach input_field_client_id to the link "get_a_code_link"
@@ -283,10 +296,8 @@
                 var input_field_resume_id_value = input_field_resume_id.value;
                 if (input_field_resume_id_value.trim().length > 0) {
                     input_field_resume_id_filled = true;
-                    // save_button.classList.remove('disabled');
                 } else {
                     input_field_resume_id_filled = false;
-                    // save_button.classList.add('disabled');
                 }
             });
 
@@ -314,18 +325,28 @@
             });
 
             // attach event to the the_form
-            document.getElementById('the_form').addEventListener('input', function() {
+            the_form.addEventListener('input', function() {
                 if (
                     input_field_access_token_filled == true
                     && input_field_refresh_token_filled == true
                     && input_field_search_links_filled == true
                     && input_field_resume_id_filled == true
                 ) {
-                    // save_button.style.opacity = 1;
                     save_button.classList.remove('disabled');
                 } else {
-                    // save_button.style.opacity = .4;
                     save_button.classList.add('disabled');
+                }
+            });
+            save_button.addEventListener('click', function() {
+                if (
+                    input_field_access_token_filled == true
+                    && input_field_refresh_token_filled == true
+                    && input_field_search_links_filled == true
+                    && input_field_resume_id_filled == true
+                ) {
+                    restart_link.classList.remove('hidden');
+                } else {
+                    restart_link.classList.add('hidden');
                 }
             });
 
