@@ -15,5 +15,5 @@
    - "resume id" — follow you resume link, and get resume id in the url of your top line browser after https://moscow.hh.ru/resume/, looks like f51d091fff033004f00039ed1f5876516d6e42
    - optional: write a cover letter, what is less than 10_000 symbols, and it must be unified for all your vacancy requests (the search links)
 > [!IMPORTANT]
-> be aware, you can set up all data only once, to set up again, you'll need to delete "api_credentials.json" and rename ./static/_index.html to ./static/index.html (if you deployed remotely, then you'll need to redeploy the repository)
+> be aware, you can set up all data only once, to set up again, you'll need to delete "api_credentials.json" file and rename ./static/_index.html file to ./static/index.html (if you deployed remotely, then you'll need to redeploy the repository)
 4. now you can start or restart the tommybot open "localhost:8080/restart" ("location_of_your_deploy/restart")
