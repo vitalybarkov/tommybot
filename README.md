@@ -8,7 +8,7 @@
       - "cd /Users/you_are/Downloads/tommybot" (change to location of your unzipped tommybot)
       - "go build main.go"
       - "main" (or "main.exe" on win, if you need run your app with another port, just add your port number like "main 8081")
-      - open your browser and go to https://dev.hh.ru/admin and edit "Redirect URI" field of your app with "https://tommybot-code.onrender.com/get_code the location_of_your_deploy/get_code" (if you deployed remotely, use "location_of_your_deploy/get_code") 
+      - open your browser and go to https://dev.hh.ru/admin and edit "Redirect URI" field of your app with "https://tommybot-code.onrender.com/get_code (if you deployed remotely, use "location_of_your_deploy/get_code") 
       - open your browser at "localhost:8080/set" (if on render, than "location_of_your_deploy/set")
 3. next, prepare data for the tommybot set up, and fill the form:
    - prepare search links collection for the tommybot (every line is a search link, can be many lines), by your browser just use search at hh.ru, than copy the top line browser link, looks like https://moscow.hh.ru/search/vacancy?hhtmFrom=main&hhtmFromLabel=vacancy_search_line&search_field=name&search_field=company_name&search_field=description&enable_snippets=false&L_save_area=true&area=1&text=java
