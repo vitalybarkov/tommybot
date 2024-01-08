@@ -14,8 +14,8 @@
    - prepare "client id" and "client secret" of your app at https://dev.hh.ru/admin
    - fill the input fields "client id" and "client secret", than click on the "GET A CODE" link
    - authorize your hh.ru account
-   - wait (can be long ~1 min wait) for appearens "code" and copy and paste the code in the code field of the set up form
-   - click on the "GET ACCESS AND REFRESH TOKENS" link, that will fill "access token" and "refresh token" (the code can be used only once, to get the new one code, lick on the "GET A CODE" link again)
+   - wait (can be long ~1 min wait) for appearance the code, copy the code and get back to the set up form and fill the "code" field by paste
+   - click on the "GET ACCESS AND REFRESH TOKENS" link, that will fill "access token" and "refresh token" (the code can be used only once, to get the new one code, click on the "GET A CODE" link again)
    - prepare and fill the "search links" textarea (every line is a search link, can be many lines), by your browser just use search at hh.ru, than copy the top line browser link, looks like https://moscow.hh.ru/search/vacancy?hhtmFrom=main&hhtmFromLabel=vacancy_search_line&search_field=name&search_field=company_name&search_field=description&enable_snippets=false&L_save_area=true&area=1&text=java
    - prepare and fill the "resume id" — follow you resume link, and get resume id in the url of your top line browser after https://moscow.hh.ru/resume/, looks like f51d091fff033004f00039ed1f5876516d6e42
    - optional: write a cover letter and fill the "cover letter" textarea (what is less than 10_000 symbols, and it must be unified for all your vacancy requests (the search links))
