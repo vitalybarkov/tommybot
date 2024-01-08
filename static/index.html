@@ -367,6 +367,8 @@
                         } else {
                             input_field_access_token.value = data.access_token;
                             input_field_refresh_token.value = data.refresh_token;
+                            input_field_access_token_filled = true;
+							input_field_refresh_token_filled = true;
                             get_access_and_refresh_tokens_message.innerHTML = "&nbsp;";
                             console.log('Success:', data);
                         }
