@@ -17,7 +17,7 @@
    - wait (can be long ~1 min wait) for appearance the code, copy the code and get back to the set up form and fill the "code" field by paste
    - click on the "GET ACCESS AND REFRESH TOKENS" link, that will fill "access token" and "refresh token" (the code can be used only once, to get the new one code, click on the "GET A CODE" link again)
    - prepare and fill the "search links" textarea (every line is a search link, can be many lines) — by your browser just use search at hh.ru, than copy the browser top line link, looks like https://moscow.hh.ru/search/vacancy?hhtmFrom=main&hhtmFromLabel=vacancy_search_line&search_field=name&search_field=company_name&search_field=description&enable_snippets=false&L_save_area=true&area=1&text=java
-   - prepare and fill the "resume id" — follow your resume link, and get resume id in the url of your browser top line after https://moscow.hh.ru/resume/, looks like f51d091fff033004f00039ed1f5876516d6e42
+   - prepare and fill the "resume id" — follow your resume link, and get the resume id in the url of your browser top line after https://moscow.hh.ru/resume/, looks like f51d091fff033004f00039ed1f5876516d6e42
    - optional: write a cover letter and fill the "cover letter" textarea (what is less than 10_000 symbols, and it must be unified for all your vacancy requests (the search links))
 > [!IMPORTANT]
 > be aware, you can set up all data only once, to set up again, you'll need to delete "api_credentials.json" file and rename ./static/_index.html file to ./static/index.html (if you deployed remotely, then you'll need to redeploy the repository)
