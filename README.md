@@ -11,8 +11,8 @@
       - open your browser at "localhost:8080/set" (if you deployed remotely, than "location_of_your_deploy/set")
       - open your browser and go to https://dev.hh.ru/admin and edit "Redirect URI" field of your app with https://tommybot-code.onrender.com/get_code (if you deployed remotely, use "location_of_your_deploy/get_code") 
 3. next, prepare data for the tommybot set up, and fill the set up form:
-   - copy "client id" and "client secret" of your app at https://dev.hh.ru/admin
-   - fill by pasting the input fields "client id" and "client secret", than click on the "GET A CODE" link
+   - copy "client id" and "client secret" of your app at https://dev.hh.ru/admin, fill by pasting the input fields "client id" and "client secret"
+   - than click on the "GET A CODE" link
    - authorize your hh.ru account
    - wait (can be long ~1 min wait) for appearance the code, copy the code and get back to the set up form and fill the "code" field by paste
    - click on the "GET ACCESS AND REFRESH TOKENS" link, that will fill "access token" and "refresh token" (the code can be used only once, to get the new one code, click on the "GET A CODE" link again)
