@@ -1,7 +1,7 @@
 # tommybot set up manual
 1. at the beginning, you need to get "client id" and "client secret" at https://dev.hh.ru/admin
 2. next, deploy:
-   - download zip file of the tommybot repository https://github.com/vitalybarkov/tommybot/zipball/master/, or clone https://github.com/vitalybarkov/tommybot/tree/main
+   - download zip file of the tommybot repository https://github.com/vitalybarkov/tommybot/zipball/master/, or clone https://github.com/vitalybarkov/tommybot
    - unzip with a folder name "tommybot" or something
    - install golang on your machine (https://go.dev/doc/install)
    - use terminal (or command prompt on win):
