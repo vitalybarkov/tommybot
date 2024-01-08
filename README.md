@@ -4,7 +4,7 @@
    - download zip file of the repository https://github.com/vitalybarkov/tommybot/zipball/master/, or clone https://github.com/vitalybarkov/tommybot/
    - unzip with a folder name "tommybot" or something
    - install golang on your machine (https://go.dev/doc/install)
-   - use terminal (or command promt on win)
+   - use terminal (or command prompt on win)
       - "cd /Users/you_are/Downloads/tommybot" (change to location of your unzipped tommybot)
       - "go build main.go"
       - "./main" (or "./main.exe" on win, if you need run your app with another port, just add your port number like "main 8081")
