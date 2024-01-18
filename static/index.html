@@ -77,7 +77,7 @@
             font-weight: bold;
             font-family: Arial, Helvetica, sans-serif;
         }
-        form #restart_link {
+        form #start_link {
             margin-bottom: 6em;
         }
         
@@ -164,9 +164,9 @@
             <div><input type="button" id="save_button" value="SAVE"></div>
             <div id="settings_was_stored">&nbsp;</div>
         </div>
-        <div class="line" id="restart_link">
-            <div>link to start or restart the&nbsp;tommybot</div>
-            <div><a href="/restart">/restart</a></div>
+        <div class="line" id="start_link">
+            <div>link to start the&nbsp;tommybot</div>
+            <div><a href="/hi">/hi</a></div>
         </div>
     </form>
 
@@ -186,7 +186,7 @@
             var input_field_resume_id = document.getElementById('resume_id');
             var input_field_cover_letter = document.getElementById('cover_letter');
             var save_button = document.getElementById('save_button');
-            var restart_link = document.getElementById('restart_link');
+            var start_link = document.getElementById('start_link');
             var the_form = document.getElementById('the_form');
             var settings_was_stored = document.getElementById('settings_was_stored');
             var post_data = {
@@ -209,7 +209,7 @@
             input_field_code.classList.add('disabled');
             get_access_and_refresh_tokens_link.classList.add('disabled');
             save_button.classList.add('disabled');
-            restart_link.classList.add('hidden');
+            start_link.classList.add('hidden');
             // END data
 
             // attach input_field_client_id to the link "get_a_code_link"
@@ -344,9 +344,9 @@
                     && input_field_search_links_filled == true
                     && input_field_resume_id_filled == true
                 ) {
-                    restart_link.classList.remove('hidden');
+                    start_link.classList.remove('hidden');
                 } else {
-                    restart_link.classList.add('hidden');
+                    start_link.classList.add('hidden');
                 }
             });
 
