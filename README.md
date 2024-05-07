@@ -22,3 +22,5 @@
 > [!IMPORTANT]
 > be aware, you can set up all data only once, to set up again, you'll need to delete "api_credentials.json" file and rename ./static/_index.html file to ./static/index.html (if you deployed remotely, then you'll need to redeploy the repository)
 4. now, you can start the tommybot by opening "localhost:8080/hi" ("location_of_your_deploy/hi") or restart by "localhost:8080/restart" ("location_of_your_deploy/restart")
+>
+> ![poster](static/poster_03_4.png)
