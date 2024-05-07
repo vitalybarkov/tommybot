@@ -1,3 +1,5 @@
+![poster](static/poster_03_4.png)
+
 # tommybot руководство по установке
 1. для начала, нужно получить "client id" и "client secret", для этого:
    - почитайте условия использования https://dev.hh.ru/admin/developer_agreement
