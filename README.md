@@ -1,4 +1,4 @@
-![poster](static/poster_03_4_2.png)
+![poster](static/poster_03_4_3.png)
 
 # tommybot руководство по установке
 1. для начала, нужно получить "client id" и "client secret", для этого:
