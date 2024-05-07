@@ -1,5 +1,3 @@
-![poster](static/poster_03_4.png)
-
 # tommybot set up manual
 1. at the beginning, you need to get "client id" and "client secret" at https://dev.hh.ru/admin
 2. next, deploy:
