@@ -1,4 +1,5 @@
 ![poster](static/poster_03_4_6.png)
+tommybot делат отклики за вас
 
 # tommybot руководство по установке
 1. для начала, нужно получить "client id" и "client secret", для этого:
