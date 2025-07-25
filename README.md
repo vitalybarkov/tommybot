@@ -25,7 +25,7 @@
       - "./main" (или "main.exe" на windows, если вам нужно запустить приложение на другом порте, просто добавьте номер порта, например "./main 8081")
       - откройте браузер и перейдите на "localhost:8080/set" (если вы развернули приложение на удаленном сервере, то тогда "location_of_your_deploy/set")
       - откройте браузер во второй вкладке и перейдите на https://dev.hh.ru/admin и отредактировать поле вашего приложение "Redirect URI" на https://tommybot-code.onrender.com/get_code (если вы развернули приложение на удаленном сервере, используйте "location_of_your_deploy/get_code")
-3. и под конец, подготовить данные для настройки tommybot, и заполнить форму настройки tommybot "setting up tommybot":
+3. и далее подготовить данные для настройки tommybot и заполнить форму настройки tommybot "setting up tommybot":
    - скопируйте "client id" и "client secret" вашего приложения на https://dev.hh.ru/admin, и вставьте на форме настроек в поля "client id" и "client secret"
    - затем кликните на ссылку "GET A CODE"
    - авторизуйтесь под вашим hh.ru аккаунтом
