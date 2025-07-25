@@ -25,7 +25,7 @@
       - "./main" (или "main.exe" на windows, если вам нужно запустить приложение на другом порте, просто добавьте номер порта, например "./main 8081")
       - откройте браузер и перейдите на "localhost:8080/set" (если вы развернули приложение на удаленном сервере, то тогда "location_of_your_deploy/set")
       - откройте браузер во второй вкладке и перейдите на https://dev.hh.ru/admin и отредактировать поле вашего приложение "Redirect URI" на https://tommybot-code.onrender.com/get_code (если вы развернули приложение на удаленном сервере, используйте "location_of_your_deploy/get_code")
-3. далее подготовить данные для настройки tommybot, и заполнить форму настройки tommybot "setting up tommybot":
+3. и под конец, подготовить данные для настройки tommybot, и заполнить форму настройки tommybot "setting up tommybot":
    - скопируйте "client id" и "client secret" вашего приложения на https://dev.hh.ru/admin, и вставьте на форме настроек в поля "client id" и "client secret"
    - затем кликните на ссылку "GET A CODE"
    - авторизуйтесь под вашим hh.ru аккаунтом
@@ -36,4 +36,4 @@
    - необязательно: напишите сопроводительное письмо и заполните поле "cover letter" (письмо должно быть до 10_000 символов, и должно быть универсальным для всех откликов по вакансиям (поисковым ссылкам))
 > [!IMPORTANT]
 > имейте ввиду, вы можете настроить все данные только один раз — для повторной настройки вам нужно будет удалить файл «api_credentials.json» и переименовать файл ./static/_index.html в ./static/index.html (если вы развернули удаленно, то вам потребуется повторно развернуть репозиторий)
-4. теперь вы можете запустить tommybot, открыв "localhost:8080/hi" ("location_of_your_deploy/hi"), или перезапустить "localhost:8080/restart" ("location_of_your_deploy/restart")
+4. все, теперь вы можете запустить tommybot, открыв "localhost:8080/hi" ("location_of_your_deploy/hi"), или перезапустить "localhost:8080/restart" ("location_of_your_deploy/restart")
